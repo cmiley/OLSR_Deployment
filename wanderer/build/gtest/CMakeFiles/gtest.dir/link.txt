@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC   -shared -Wl,-soname,libgtest.so -o libgtest.so CMakeFiles/gtest.dir/src/gtest-all.cc.o  -L/home/testbed/Desktop/mesh_networks/cs135-f14/project2/wanderer/build/gtest/src -lpthread -Wl,-rpath,/home/testbed/Desktop/mesh_networks/cs135-f14/project2/wanderer/build/gtest/src 

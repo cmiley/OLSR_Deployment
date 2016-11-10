@@ -1,0 +1,8 @@
+prefix=/home/testbed/Desktop/mesh_networks/cs135-f14/project2/wanderer/build/devel
+
+Name: wanderer
+Description: Description of wanderer
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/testbed/Desktop/mesh_networks/cs135-f14/project2/wanderer/build/devel/lib 
+Requires: 
