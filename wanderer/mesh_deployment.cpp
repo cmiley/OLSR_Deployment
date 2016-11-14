@@ -78,7 +78,7 @@ int move_forward()
 
 int check_link_quality( ip )
 {
-	
+	string cmd = "curl http://134.197.40.8:9090/all";
 	// make sure OLSR json output plugin is enabled
 	// fetch data from OLSR server (http request)
 	// parse data
