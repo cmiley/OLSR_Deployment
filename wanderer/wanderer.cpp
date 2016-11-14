@@ -10,7 +10,7 @@
 double front_dist;  // if set correctly, this will be the closest obstacle to the front of the robot
 double left_dist; // if set correctly, this will be the closest obstacle to the left of the robot
 double right_dist; // if set correctly, this will be the closest obstacle to the right of the robot
-static const float THRESHOLD = 2.5;
+static const float THRESHOLD = 1.3;
 
 int timePassed( struct timeval refTime );
 void laserCallback(const sensor_msgs::LaserScan::ConstPtr& msg);
@@ -27,13 +27,13 @@ int main( int argc, char* argv[] )
 	geometry_msgs::Twist cmd_vel_msg;
 	double des_vel = 1.0;
 	float link_quality = 0;
-	int seconds = 25;
+	int seconds = 10;
 	struct timeval refTime;
 
 	gettimeofday( &refTime, NULL );
 
 	// loop forever
-	while( ros::ok() && link_quality < THRESHOLD )
+	while( ros::ok() )
 	{
 		// by default, the robot will move forward at 1 meter / second
 		double lvel = des_vel;
@@ -60,10 +60,15 @@ int main( int argc, char* argv[] )
 			if( right_dist < left_dist + 0.1 )
 				rvel = -0.4;
 
+		if( link_quality > THRESHOLD )
+		{
+			lvel = rvel = 0;
+		}
+
 		// stop the robot past a certain time
 		if( timePassed( refTime ) > seconds*1000000 )
 		{
-			lvel = rvel = 0;
+			link_quality = 8;
 		}
 			
 		/***************************************/

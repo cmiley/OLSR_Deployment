@@ -76,8 +76,9 @@ int move_forward()
 	lvel = 0;
 }
 
-int check_link_quality()
+int check_link_quality( ip )
 {
+	
 	// make sure OLSR json output plugin is enabled
 	// fetch data from OLSR server (http request)
 	// parse data
